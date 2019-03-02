@@ -12,7 +12,9 @@ $(document).ready(function()
 				image: "public/" + $("#pictureInput")[0].files[0].name
 			},
 			success: function(res) {
+				console.log("successfully ran")
 				console.log(res);
+				$(".text").append(res)
 			}
 		})
 	}) 
