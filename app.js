@@ -23,50 +23,51 @@ app.get('/', function(req, res) {
 });
 
 // ------------------------ for recording page ----------------------------------
-const filename = '/Users/salomonpluviose/Desktop/TimTebowGreatestSpeech.mp3';
-const encoding = 'LINEAR16';
-const sampleRateHertz = 16000;
-const languageCode = 'en-US';
+// const filename = '/Users/salomonpluviose/Desktop/TimTebowGreatestSpeech.mp3';
+async function syncRecognize() {
+  const encoding = 'LINEAR16';
+  const sampleRateHertz = 16000;
+  const languageCode = 'en-US';
 
-const file = fs.readFileSync(filename);
-const audioBytes = file.toString('base64');
+  // const file = fs.readFileSync(filename);
+  // const audioBytes = file.toString('base64');
 
-const audio = {
-  content: audioBytes,
-};
-const config = {
-  encoding: 'LINEAR16',
-  sampleRateHertz: 16000,
-  languageCode: 'en-US',
-};
-const request = {
-  audio: audio,
-  config: config,
-};
+  const audio = {
+    // content: audioBytes,
+  };
+  const config = {
+    encoding: 'LINEAR16',
+    sampleRateHertz: 16000,
+    languageCode: 'en-US',
+  };
+  const request = {
+    config: config
+  };
 
-// Create a recognize stream
-const recognizeStream = speechClient
-.streamingRecognize(request)
-.on('data', function(data) {
-  if (data) {
-    console.log("transcription: " + data.results[0].alternatives[0].transcript);
+  // Create a recognize stream
+  const recognizeStream = speechClient
+  .streamingRecognize(request)
+  .on('data', function(data) {
+    if (data) {
+      console.log("transcription: " + data.results[0].alternatives[0].transcript);
+    } else {
+      console.log("reached time limit");
+    }
+  });
+
+  var dataForStream = {
+    sampleRateHertz: sampleRateHertz,
+    threshold: 0,
+    verbose: false,
+    recordProgram: 'rec', // Try also "arecord" or "sox"
+    silence: '10.0'
   }
-});
 
-var dataForStream = {
-  sampleRateHertz: sampleRateHertz,
-  threshold: 0,
-  verbose: false,
-  recordProgram: 'rec', // Try also "arecord" or "sox"
-  silence: '10.0'
+  record.start(dataForStream).pipe(recognizeStream)
 }
 
 app.get('/record', function(req, res) {
-  res.render('record', {
-    record: record,
-    stream: recognizeStream,
-    startData: dataForStream
-  });
+  res.render('record');
 });
 
 
@@ -118,10 +119,10 @@ const document = {
       rank += 1;
     }
   });
-  console.log(entityList);
+  // console.log(entityList);
 }
 start();
-console.log(sigSentences);
+// console.log(sigSentences);
 
 app.get('/audio', function(req, res) {
   res.render('audio');
