@@ -10,6 +10,8 @@
   "license": "ISC",
   "dependencies": {
     "@google-cloud/speech": "^2.3.0",
+    "@google-cloud/vision": "^0.25.0",
+    "body-parser": "^1.18.3",
     "ejs": "^2.6.1",
     "express": "^4.16.4",
     "node-record-lpcm16": "^0.3.1",
