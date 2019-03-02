@@ -15,6 +15,9 @@ $(document).ready(function()
 				console.log("successfully ran")
 				console.log(res);
 				$(".text").append(res)
+				$("#image").attr("src", $("#pictureInput")[0].files[0].name)
+				$(".card").attr("hidden", false)
+				$(".card-header").attr("hidden",false)
 			}
 		})
 	}) 
