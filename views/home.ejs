@@ -17,15 +17,20 @@
       </a>
     </nav>
     <br>
-    <div class="record" style="text-align:center">
-      <button type="button" id="recording" class="btn btn-primary" onclick="<% record.start(startData).pipe(stream) %>">Start Recording</button>
-    </div>
-    <div class="spinner">
-
-    </div>
-    <div class="text">
-
+    <div class="picture" style="display: flex; justify-content: center">
+      <img src="goku_nimbus.png" alt="" style="width: 30%;height: 30%;">
     </div>
     <br>
+    <div class="row" style="text-align:center;">
+      <div class="col-md-12">
+        <button type="button" class="btn btn-success" id="upload">Upload MP3</button>
+      </div>
+      <div class="col-md-12">
+        <button type="button" class="btn btn-primary" id="record">Record</button>
+      </div>
+      <div class="col-md-12">
+        <button type="button" class="btn btn-warning" id="photo">Take Photo</button>
+      </div>
+    </div>
   </body>
 </html>
