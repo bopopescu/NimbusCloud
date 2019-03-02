@@ -20,6 +20,16 @@ $( document ).ready(function() {
     console.log("clicked on record");
     window.location.href = window.location.href + "record"
   });
+  $("#upload").on('click', function(event) {
+    event.preventDefault();
+    console.log("clicked on record");
+    window.location.href = window.location.href + "audio"
+  });
+  $("#photo").on('click', function(event) {
+    event.preventDefault();
+    console.log("clicked on record");
+    window.location.href = window.location.href + "photos"
+  });
 
   $("#recording").on('click', function(event) {
     event.preventDefault();
