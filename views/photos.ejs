@@ -17,7 +17,7 @@
   <body>
     <!-- Navbar -->
     <nav class="navbar navbar-light bg-dark" style="display: flex;justify-content: center;">
-      <a class="navbar-brand" href="#" style="color: white; text-align: center;">
+      <a class="navbar-brand" href="/" style="color: white; text-align: center;">
         Nimbus
         <img src="nimbus.png" alt="" style="width: 20%;height: 30%;">
       </a>
@@ -25,7 +25,7 @@
     <!-- <h1 style="text-align:center">Photo to Text</h1> -->
     <div class="container mic">
       <form action="/postphoto" id="convertImage" class="box has-advanced-upload">
-        <div class="box-input file-drop-zone-title">
+        <div class="box-input file-drop-zone-title" style="padding: 45px 10px!important;">
           <!-- <input type="file" id="pictureInput" name="imageInput" accept="image/*"> -->
           <input id="pictureInput" name="imageInput" type="file" class="file" data-browse-on-zone-click="true" accept="image/*">
           <br>
@@ -35,8 +35,15 @@
         </div>
       </form>
     </div>
-    <div class="container text" style="text-align:center">
+    <h2 style="text-align:center">Picture To Text</h2>
+    <div class="container" style="text-align:center">
+      <ul class="list-group" style="text-align: center;">
+        <li class="list-group-item" id="list1" hidden="true">
+          <p id="picture2Text">
 
+          </p>
+        </li>
+      </ul>
     </div>
     <br>
     <br>

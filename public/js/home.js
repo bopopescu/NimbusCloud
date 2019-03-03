@@ -70,9 +70,9 @@ $( document ).ready(function() {
           $("#word"+i).text("Word: " + res[i].name);
           $("#type"+i).text("Type: " + res[i].type);
           if (res[i].metadata.wikipedia_url) {
-            $("#wiki"+i).text("Wiki: " + res[i].metadata.wikipedia_url);
+            $("#wiki"+i).text(res[i].metadata.wikipedia_url);
+            $("#wiki"+i).attr("href", res[i].metadata.wikipedia_url)
           }
-          res[i]
         }
 			}
 		})

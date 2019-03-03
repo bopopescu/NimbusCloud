@@ -5,3 +5,7 @@
 .btn {
   width: 33%;
 }
+
+p {
+  margin-bottom: 0.3rem !important;
+}
