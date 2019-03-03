@@ -6,7 +6,8 @@ $( document ).ready(function() {
     for (var i = event.resultIndex; i < event.results.length; ++i) {
         if (event.results[i].isFinal) { //Final results
             console.log("final results: " + event.results[i][0].transcript);   //Of course – here is the place to do useful things with the results.
-            $(".text").append(event.results[i][0].transcript);
+            // $(".text").append(event.results[i][0].transcript + ".");
+            $("#comment").append(event.results[i][0].transcript + ".")
         } else {   //i.e. interim...
             console.log("interim results: " + event.results[i][0].transcript);  //You can use these results to give the user near real time experience.
         }
@@ -38,11 +39,32 @@ $( document ).ready(function() {
       recording = false;
       $("#recording").text("Start Recording")
       recognition.stop();
+      // button to analyze speech
+      var text = $("#comment")[0].value
+      // unhide button
+      $("#analyze").attr("hidden", false);
     } else {
       recording = true;
       $("#recording").text("Stop Recording")
       recognition.start();
     }
   });
+
+  $("#analyze").on('click', function(event) {
+    event.preventDefault();
+    console.log("analyzing...");
+    var text = $("#comment")[0].value
+    $.ajax({
+			type: "POST",
+			url: "/analyzeAudio",
+			data: {
+				text: text
+			},
+			success: function(res) {
+				console.log("successfully ran")
+				console.log(res);
+			}
+		})
+  })
 
 });

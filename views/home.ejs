@@ -2,35 +2,66 @@
 <html lang="en" dir="ltr">
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Record Yourself</title>
+    <title>Nimbus</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="/page.css">
-    <script type="text/javascript" src="/home.js"></script>
+    <link rel="stylesheet" href="css/page.css">
+    <script type="text/javascript" src="js/home.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
   </head>
-  <body>
+  <body style="width: 103%;">
     <!-- Navbar -->
     <nav class="navbar navbar-light bg-dark" style="display: flex;justify-content: center;">
-      <a class="navbar-brand" href="#" style="color: white">
+      <a class="navbar-brand" href="#" style="color: white; text-align: center;">
         Nimbus
+        <img src="nimbus.png" alt="" style="width: 20%;height: 30%;">
       </a>
     </nav>
-    <br>
+    <div class="jumbotron">
+      <h1 style="text-align: center">Welcome to Nimbus</h1>
+    </div>
     <div class="picture" style="display: flex; justify-content: center">
-      <img src="goku_nimbus.png" alt="" style="width: 30%;height: 30%;">
+
     </div>
     <br>
-    <div class="row" style="text-align:center;">
-      <div class="col-md-12">
-        <button type="button" class="btn btn-success" id="upload">Upload MP3</button>
-      </div>
-      <div class="col-md-12">
-        <button type="button" class="btn btn-primary" id="record">Record</button>
-      </div>
-      <div class="col-md-12">
-        <button type="button" class="btn btn-warning" id="photo">Take Photo</button>
+    <br>
+    <div class="container">
+      <div class="row" style="text-align:center;">
+        <div class="col-lg-4">
+          <img src="https://img.icons8.com/ios/50/000000/audio-wave-filled.png" class="" alt="">
+          <h2>Audio To Text</h2>
+          <p>
+            Need an transcript of an audio file? Upload a Audio file and convert it to text with our robust audio to text feature!
+          </p>
+          <p>
+            <button type="button" class="btn btn-success" id="upload">Upload MP3</button>
+          </p>
+        </div>
+        <div class="col-lg-4">
+          <img src="https://img.icons8.com/ios/50/000000/video-editing.png" class="">
+          <h2>Speech to Text</h2>
+          <p>
+            Don't have time to write something down? No worries, use our efficient speech to text feature to jot down all your amazing thoughts!
+          </p>
+          <p>
+            <button type="button" class="btn btn-primary" id="record">Record</button>
+          </p>
+        </div>
+        <div class="col-lg-4">
+          <img src="https://img.icons8.com/ios/50/000000/image.png">
+          <h2>Picture to Text</h2>
+          <p>
+            Don't know what something means, want to know what translate a photo of words? Use our fast and accurate vision nimbus to translate what a picture is saying
+          </p>
+          <p>
+            <button type="button" class="btn btn-warning" id="photo">Take Photo</button>
+          </p>
+        </div>
       </div>
     </div>
+    <br>
+    <br>
+    <br>
   </body>
 </html>

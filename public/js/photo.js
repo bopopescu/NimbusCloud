@@ -1,7 +1,6 @@
-$(document).ready(function()
-{
+$(document).ready(function() {
 	console.log("document ready")
-	$("#convertImage").on('submit', function(event) 
+	$("#convertImage").on('submit', function(event)
 	{
 		event.preventDefault();
 		console.log("clicked button")
@@ -17,5 +16,5 @@ $(document).ready(function()
 				$(".text").append(res)
 			}
 		})
-	}) 
+	})
 })

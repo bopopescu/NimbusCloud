@@ -162,51 +162,54 @@ var entityList = [];
 // order of entity importance counter
 rank = 1;
 
-// amount of important sentences to extract from text
-var extractAmount = 5;
-
 var settings = { // does not compile, just pesudocode layout
-    extractAmount: extractAmount, // Extracts 6 sentences instead of the default 5.
+    extractAmount: 1, // Extracts 6 sentences instead of the default 5.
     // Returns an array of the summarized sentences instead of a long string default is a string.
     summaryType: "array",
 };
-var textRank = new tr.TextRank(text,settings);
 
-// array of most significant sigSentences
-var sigSentences = textRank.summarizedArticle;
-
-const document = {
-  content: sigSentences,
-  type: 'PLAIN_TEXT',
-};
-
- async function start() {
-  const [result] = await languageClient.analyzeEntities({document});
-  const entities = result.entities;
-  var duplicates = new Set();
-
-//   console.log('Entities:');
-  entities.forEach(entity => {
-
-    // if not duplicate
-    if (!duplicates.has(entity.name)) {
-      duplicates.add(entity.name);
-      entityList.push({
-        type: entity.type,
-        name: entity.name,
-        rank: rank,
-        wikipedia_url: entity.metadata.wikipedia_url
-      });
-      rank += 1;
-    }
-  });
-  // console.log(entityList);
-}
-start();
 // console.log(sigSentences);
 
 app.get('/audio', function(req, res) {
   res.render('audio');
+});
+
+app.post('/analyzeAudio', function(req, res) {
+  console.log("got request to analyze: " + req.body.text);
+  var textRank = new tr.TextRank(req.body.text, settings);
+
+  // array of most significant sigSentences
+  var sigSentences = textRank.summarizedArticle;
+
+  const document = {
+    content: sigSentences,
+    type: 'PLAIN_TEXT',
+  };
+
+  async function start() {
+     const [result] = await languageClient.analyzeEntities({document});
+     const entities = result.entities;
+     var duplicates = new Set();
+
+   //   console.log('Entities:');
+     res.json(entities);
+     entities.forEach(entity => {
+
+       // if not duplicate
+       if (!duplicates.has(entity.name)) {
+         duplicates.add(entity.name);
+         entityList.push({
+           type: entity.type,
+           name: entity.name,
+           rank: rank,
+           wikipedia_url: entity.metadata.wikipedia_url
+         });
+         rank += 1;
+       }
+     });
+     // console.log(entityList);
+   }
+  start();
 });
 
 app.listen(3000, function() {
