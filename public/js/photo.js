@@ -13,7 +13,10 @@ $(document).ready(function() {
 			success: function(res) {
 				console.log("successfully ran")
 				console.log(res);
-				$(".text").append(res)
+				$(".text").append(res + "<br>")
+				$("#image").attr("src", $("#pictureInput")[0].files[0].name)
+				$(".card").attr("hidden", false)
+				$(".card-header").attr("hidden",false)
 			}
 		})
 	})
