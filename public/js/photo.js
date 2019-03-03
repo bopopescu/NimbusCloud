@@ -1,8 +1,10 @@
 $(document).ready(function() {
 	console.log("document ready")
+	var count = 0;
 	$("#convertImage").on('submit', function(event)
 	{
 		event.preventDefault();
+
 		console.log("clicked button")
 		$.ajax({
 			type: "POST",
@@ -13,8 +15,10 @@ $(document).ready(function() {
 			success: function(res) {
 				console.log("successfully ran")
 				console.log(res);
-				$("#list1").attr("hidden", false);
-				$("#picture2Text").text("Interpreted Word: " + res);
+				// $("#list1").attr("hidden", false);
+				// $("#picture2Text").text("Interpreted Word: " + res);
+				$(".text").append(res + "<br>")
+				count++;
 			}
 		})
 	})
