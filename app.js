@@ -113,13 +113,15 @@ async function syncRecognize(
    */
   //const filename = 'Local path to audio file, e.g. /path/to/audio.raw';
   const encoding = 'LINEAR16';
-  const sampleRateHertz = 16000;
+  const sampleRateHertz = 44100;
   const languageCode = 'en-US';
 
   const config = {
     encoding: encoding,
     sampleRateHertz: sampleRateHertz,
     languageCode: languageCode,
+    audioChannelCount: 2,
+  enableSeparateRecognitionPerChannel: true
   };
 
   const audio = {
